@@ -7,9 +7,9 @@ class Connection {
       this.pool = mysql.createPool({
         connectionLimit: 100,
         host: 'den1.mysql3.gear.host',
-        user: 'ysdb1',
-        password: 'adminadmin1!',
-        database: 'ysdb1'
+        user: 'hackathon31',
+        password: 'Tp4iMH!!vaYG',
+        database: 'hackathon31'
       })
 
       return this.pool
@@ -22,3 +22,5 @@ class Connection {
 const instance = new Connection()
 
 module.exports = instance;
+
+
