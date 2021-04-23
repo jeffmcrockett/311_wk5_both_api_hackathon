@@ -1,18 +1,19 @@
-
-const express = require("express");
-const bodyParser = require("body-parser");
-const usersRouter = require('./routers/users');
-
+const express = require('express');
 const app = express();
-const port = process.env.PORT || 4000;
+const bodyParser = require('body-parser');
+const employees = require('./routes/employees')
 
-app.use(bodyParser.json())
-app.use('/router', router);
+app.use(bodyParser.json());
+app.use(employees)
 
-app.get('/', (req, res) => {
-  res.send('Welcome to our server!')
+
+const port = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  console.log(`inside our 1st GET route`);
+  res.send(`Welcome to our API!`)
 })
 
 app.listen(port, () => {
- console.log(`Web server is listening on port ${port}!`);
-});
+  console.log(`Web Server is listening on port ${3000}`)
+})

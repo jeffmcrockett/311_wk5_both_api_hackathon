@@ -1,4 +1,4 @@
-const mysql = require('mysql')
+const mysql = require('mysql');
 
 class Connection {
   constructor() {
@@ -12,7 +12,7 @@ class Connection {
         database: 'hackathon31'
       })
 
-      return this.pool
+       return this.pool
     }
 
     return this.pool
@@ -22,5 +22,3 @@ class Connection {
 const instance = new Connection()
 
 module.exports = instance;
-
-
