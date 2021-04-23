@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const employees = require('./routes/employees')
+const departments = require('./routes/departments')
 
 app.use(bodyParser.json());
 app.use(employees)
-
+app.use(departments)
 
 const port = process.env.PORT || 3000;
 
