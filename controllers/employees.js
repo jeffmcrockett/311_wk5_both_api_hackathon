@@ -1,6 +1,6 @@
 const connection = require('../sql/connection')
 
-const list = (req, res) => {
+const getEmployees = (req, res) => {
   console.log(`inside the GET /employees list route`);
   connection.query('SELECT * FROM employees LIMIT 100', function(err, results){
     if(err){
@@ -12,14 +12,30 @@ const list = (req, res) => {
   });
 };
 
-const show = (req, res) => {
-  console.log(`inside the GET /employees by id route`)
-  res.send(`getting employee by id...`)
+const getEmployeesById = (req, res) => {
+  console.log(`inside the GET /employees/:id by id route`);
+  let sql = `SELECT * FROM employees WHERE emp_no = ${req.params.id}`;
+  connection.query(sql, (err, results) => {
+    if(err){
+      console.log(`there is an error : ${err}`);
+      res.status(500).send(`internal service error`)
+    };
+    console.log(results);
+    res.json(results)
+  })
 };
 
-const create = (req, res) => {
-  console.log(`inside the GET /employees by first_name route`)
-  res.send(`getting employee by first name...`)
+const getEmployeesByFirstName = (req, res) => {
+  console.log(`inside the GET /employees/firstname/:first_name route`);
+  let sql = `SELECT * FROM employees WHERE first_name = '${req.params.first_name}'`;
+  connection.query(sql, (err, results) => {
+    if(err){
+      console.log(`there is an error : ${err}`);
+      res.status(500).send(`internal service error (employee by firstname), ${req.params.first_name}`)
+    };
+    console.log(results);
+    res.json(results)
+  })
 };
 
-module.exports = { list, show, create };
+module.exports = { getEmployees, getEmployeesById, getEmployeesByFirstName };
